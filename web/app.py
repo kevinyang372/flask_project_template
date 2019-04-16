@@ -7,7 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-URI = 'postgresql://cs162_user:cs162_password@db/cs162'
+
+URI = 'sqlite://'
 app.config['SQLALCHEMY_DATABASE_URI'] = URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
