@@ -1,15 +1,16 @@
-# This simple app performs simple calculations and stores the results in an
-# postgres database.  When someone visits the home page they can see the 10
-# most recent calculations.
-
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
+
+# The first thing we do is inject necessary environment dependencies.
+# Note that this will not overwrite existing environment variables.
+import dotenv
+dotenv.load_dotenv()
 
 app = Flask(__name__)
 
-URI = 'sqlite://'
-app.config['SQLALCHEMY_DATABASE_URI'] = URI
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -20,12 +21,18 @@ class User(db.Model):
     name = db.Column(db.String(200))
 
 db.create_all()
+example_user = User(id=1, name="Philip Sterne")
+db.session.merge(example_user)
 db.session.commit()
-
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
+@app.route('/users')
+def users():
+    users = User.query.all()
+    return render_template('users.html', users=users)
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run()

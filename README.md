@@ -25,9 +25,9 @@ Creation of virtualenv:
 
     $ virtualenv -p python3 venv
 
-If the above code does not work, you could also do 
+If the above code does not work, you could also do
 
-    $ python3 -m virtualenv venv
+    $ python3 -m venv venv
 
 To activate the virtualenv:
 
@@ -44,15 +44,33 @@ To deactivate the virtualenv (after you finished working):
 Install dependencies in virtual environment:
 
     $ pip3 install -r requirements.txt
-    
+
+## Environment Variables
+
+TBD
+
 ## Run Application
 
 Start the server by running:
-  
-    $ python web/app.py
 
-## Unit Test
+    $ export FLASK_ENV=development
+    $ export FLASK_APP=web
+    $ flask run
 
-Test the current code when server is up by running:
+## Unit Tests
+To run the unit tests use the following commands:
 
+    $ python3 -m venv venv_unit
+    $ source venv_unit/bin/activate
+    $ pip install -r requirements-unit.txt
+    $ pytest unit_test
+
+## Integration Tests
+Start by running the web server in a separate terminal.
+
+Now run the integration tests using the following commands:
+
+    $ python3 -m venv venv_integration
+    $ source venv_integration/bin/actvate
+    $ pip3 install -r requirements-integration.txt
     $ python integration-test/test.py
