@@ -10,6 +10,8 @@ install:
   - pip install -r requirements-integration.txt
   - pip install -r requirements-unit.txt
 
-script:
+before_script:
   - python3 -m flask run
+
+script:
   - python integration_test/test_example.py
