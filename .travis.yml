@@ -7,14 +7,12 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install -r requirements-integration.txt
+  - pip install -r requirements-unit.txt
 
 run_app:
   - python3 -m flask run
 
-integration-test:
-  - pip install -r requirements-integration.txt
+script:
   - python integration-test/test_example.py
-
-unit-tests:
-  - pip install -r requirements-unit.txt
   - pytest unit_test
