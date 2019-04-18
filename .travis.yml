@@ -6,10 +6,15 @@ python:
   - "3.6"
 
 install:
-  - pip install -r tests/requirements.txt
+  - pip install -r requirements.txt
 
 run_app:
-  - python web/app.py
+  - python3 -m flask run
 
-script:
-  - python integration-test/test.py
+integration-test:
+  - pip install -r requirements-integration.txt
+  - python integration-test/test_example.py
+
+unit-tests:
+  - pip install -r requirements-unit.txt
+  - pytest unit_test
