@@ -47,15 +47,16 @@ Install dependencies in virtual environment:
 
 ## Environment Variables
 
-TBD
+All environment variables are stored within the `.env` file and loaded with dotenv package.
+
+**Never** commit your local settings to the Github repository!
 
 ## Run Application
 
 Start the server by running:
 
     $ export FLASK_ENV=development
-    $ export FLASK_APP=web
-    $ flask run
+    $ python3 -m flask run
 
 ## Unit Tests
 To run the unit tests use the following commands:
