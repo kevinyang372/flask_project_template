@@ -10,7 +10,10 @@ install:
   - pip install -r requirements-integration.txt
   - pip install -r requirements-unit.txt
 
-script:
+before_script:
   - export SQLALCHEMY_DATABASE_URI='sqlite:///web.db'
-  - pytest unit_test
+  - python3 -m flask run > /dev/null &
+
+script:
   - python -m unittest discover -v
+  
