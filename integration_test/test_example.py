@@ -1,4 +1,5 @@
 import unittest
+import requests
 from web.serve import app
 
 class FlaskTestCase(unittest.TestCase):
