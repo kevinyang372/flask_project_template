@@ -13,6 +13,7 @@ install:
 before_script:
   - export SQLALCHEMY_DATABASE_URI='sqlite:///web.db'
   - python3 -m flask run > /dev/null &
+  - curl http://localhost:5000/
 
 script:
   - python -m unittest discover -v
