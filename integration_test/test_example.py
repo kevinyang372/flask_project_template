@@ -1,5 +1,5 @@
-import requests
 import unittest
+import requests
 
 class FlaskTestCase(unittest.TestCase):
 

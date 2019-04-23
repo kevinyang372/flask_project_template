@@ -64,6 +64,7 @@ To run the unit tests use the following commands:
     $ python3 -m venv venv_unit
     $ source venv_unit/bin/activate
     $ pip install -r requirements-unit.txt
+    $ export SQLALCHEMY_DATABASE_URI='sqlite:///web.db'
     $ pytest unit_test
 
 ## Integration Tests
@@ -74,4 +75,5 @@ Now run the integration tests using the following commands:
     $ python3 -m venv venv_integration
     $ source venv_integration/bin/actvate
     $ pip3 install -r requirements-integration.txt
-    $ python integration-test/test.py
+    $ export SQLALCHEMY_DATABASE_URI='sqlite:///web.db'
+    $ python -m unittest discover -v
